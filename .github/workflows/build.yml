@@ -1,0 +1,26 @@
+name: Build .NET Framework 4.8
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore TP6_Grupo19.sln
+
+      - name: Build solution
+        run: msbuild TP6_Grupo19.sln /p:Configuration=Release
