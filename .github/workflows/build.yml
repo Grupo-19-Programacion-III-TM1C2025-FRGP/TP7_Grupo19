@@ -20,7 +20,7 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Restore NuGet packages
-        run: nuget restore TP6_Grupo19.sln
+        run: nuget restore TP7_Grupo19.sln
 
       - name: Build solution
-        run: msbuild TP6_Grupo19.sln /p:Configuration=Release
+        run: msbuild TP7_Grupo19.sln /p:Configuration=Release
