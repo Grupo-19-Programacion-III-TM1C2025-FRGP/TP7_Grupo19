@@ -12,10 +12,12 @@ namespace TP7_Grupo19
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+            
+
             if (Session["SucursalesSeleccionadas"] != null)
             {
-                gvSeleccionados.DataSource = (DataTable)Session["SucursalesSeleccionadas"];
-                gvSeleccionados.DataBind();
+                GridView1.DataSource = Session["SucursalesSeleccionadas"];
+                GridView1.DataBind();
             }
 
         }

@@ -13,7 +13,7 @@ namespace TP7_Grupo19
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
 
         protected void btnSeleccionar_Command(object sender, CommandEventArgs e)
@@ -21,17 +21,6 @@ namespace TP7_Grupo19
             if(e.CommandName == "eventoSeleccionar")
             {
                 string[] propiedades = e.CommandArgument.ToString().Split('|');
-
-                /*
-                propiedades[0] = id
-                propiedades[1] = nombre
-                propiedades[2] = descripcion
-                */
-
-                // Guardar las propiedades de la sucursal en Session
-                /*Session["IdSucursal"] = propiedades[0];
-                Session["NombreSucursal"] = propiedades[1];
-                Session["DescripcionSucursal"] = propiedades[2];*/
 
                 string Id_Sucursal = propiedades[0];
                 string NombreSucursal= propiedades[1];  
@@ -42,19 +31,19 @@ namespace TP7_Grupo19
                 ActualizarDTSession(Sucursal);
                 
             }
-        }
+        }  
 
         private void ActualizarDTSession(dynamic obj)
         {
-            if (Session["TablaSucursalSeleccionada"] == null)
+            if (Session["SucursalesSeleccionadas"] == null)
             {
-                Session["TablaSucursalSeleccionada"] = CrearDataTable();
+                Session["SucursalesSeleccionadas"] = CrearDataTable();
             }
 
-            DataTable dt = (DataTable)Session["TablaSucursalSeleccionada"];
+            DataTable dt = (DataTable)Session["SucursalesSeleccionadas"];
 
-            int idSucursalNueva = Convert.ToInt32(obj.ID_SUCURSAL);
-            bool yaExiste = dt.AsEnumerable().Any(row => row.Field<int>("Id_Sucursal") == idSucursalNueva);
+            string idSucursalNueva = obj.ID_SUCURSAL;
+            bool yaExiste = dt.AsEnumerable().Any(row => row.Field<string>("ID_SUCURSAL") == idSucursalNueva);
 
             if (!yaExiste)
             {

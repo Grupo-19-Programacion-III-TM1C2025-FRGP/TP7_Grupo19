@@ -65,16 +65,7 @@
                 <tr>
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style3">
-                        <asp:GridView ID="gvSeleccionados" runat="server" AutoGenerateColumns="False" Width="374px">
-                            <Columns>
-                                <asp:TemplateField HeaderText="ID_SUCURSAL">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lbl_it_idsucursal" runat="server"></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="NOMBRE"></asp:TemplateField>
-                                <asp:TemplateField HeaderText="DESCRIPCION"></asp:TemplateField>
-                            </Columns>
+                        <asp:GridView ID="GridView1" runat="server" Width="549px">
                         </asp:GridView>
                     </td>
                     <td>&nbsp;</td>
